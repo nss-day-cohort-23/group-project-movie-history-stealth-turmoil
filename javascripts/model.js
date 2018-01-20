@@ -3,10 +3,12 @@
 const firebase = require("./config/fbConfig");
 const cred = require('./config/fbCreds');
 
+require("firebase/auth");
+
 module.exports(function() {
 
- 
-    firebase.initializeApp(config);
+    // I had to comment this out for it to work. I am not sure why???
+    //firebase.initializeApp(config);
 
   const txtEmail = document.getElementById('txtEmail');
   const txtPassword = document.getElementById('txtPassword');
