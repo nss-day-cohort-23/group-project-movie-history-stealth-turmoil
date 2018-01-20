@@ -1,34 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
-    <div id="navbar">
+  <div id="navbar">
+    <button id="btnLogOut" class=" btn-action login-button btn-primary btn-sm hidden  ">Log Out</button>
+  </div>
+
+  <div class="main-login main-center" id='main-div'>
+    <!-- <form class="form-horizontal" method="post" action="#"> -->
+
+    <div class="form-group hidden" id="userBox">
+      <label for="userName" class="cols-sm-2 control-label">User Name</label>
+      <div class="cols-sm-10">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-user fa" aria-hidden="true"></i>
+          </span>
+          <input type="text" class="form-control" name="userName" id="userName" placeholder="Enter your name" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="txtEmail" class="cols-sm-2 control-label">Email</label>
+      <div class="cols-sm-10">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-envelope fa" aria-hidden="true"></i>
+          </span>
+          <input type="email" class="form-control" name="email" id="txtEmail" placeholder="Enter your Email" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="txtPassword" class="cols-sm-2 control-label">Password</label>
+      <div class="cols-sm-10">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+          </span>
+          <input type="password" class="form-control" name="password" id="txtPassword" placeholder="Enter your Password" />
 
         </div>
-    
-        <div class="main-div">
-            <h3>Web Login</h3>
-            <input id="txtEmail" type="email" placeholder="Email">
-    
-            <input id="txtPassword" type="password" placeholder="Password">
-    
-            <button id="btnLogin" class="btn-action">Login</button>
-            <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
-            <button id="btnLogOu" class="btn btn-action hide">Log Out</button>
-            </div>
-        </div>
-        <div id="mainContainer">
-            <div id="leftHandContainer">
-                <div id="output"></div>
-    
-            </div>
-            <!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script> -->
-            <script src="dist/bundle.js"></script>
+      </div>
+    </div>
+
+
+    <div class="login-register">
+      <button id="btnLogin" class=" btn-action login-button btn-primary btn-sm btn-block">Login</button>
+      <button id="btnSignUp" class=" login-button btn-primary btn-sm btn-block">Sign Up</button>
+
+    </div>
+
+
+    <!-- </form> -->
+  </div>
+  <div id="mainContainer">
+    <div id="leftHandContainer">
+      <div id="output"></div>
+
+    </div>
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script> -->
+    <script src="dist/bundle.js"></script>
 </body>
+
 </html>

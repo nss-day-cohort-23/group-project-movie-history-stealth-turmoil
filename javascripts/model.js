@@ -2,53 +2,69 @@
 
 const firebase = require("./config/fbConfig");
 const cred = require('./config/fbCreds');
+const $ = require('jquery');
 
 require("firebase/auth");
 
-module.exports(function() {
+(function doTheThing() {
 
-    // I had to comment this out for it to work. I am not sure why???
-    //firebase.initializeApp(config);
 
-  const txtEmail = document.getElementById('txtEmail');
-  const txtPassword = document.getElementById('txtPassword');
-  const btnLogin = document.getElementById('btnLogin');
-  const btnSignUp = document.getElementById('btnSignUp');
-  const btnLogout = document.getElementById('btnLogout');
+  // I had to comment this out for it to work. I am not sure why???
+  //firebase.initializeApp(config);
 
-  btnLogin.addEventListener('click', e => {
-      const email = txtEmail.value;
-      const pass = txtPassword.value;
-      const auth = firebase.auth();
+  const $txtEmail = $('#txtEmail');
+  const $txtPassword = $('#txtPassword');
+  const $btnLogin = $('#btnLogin');
+  const $btnSignUp = $('#btnSignUp');
+  const $btnLogOut = $('#btnLogOut');
 
-      const promise = auth.signInWithEmailAndPassword(email, pass);
-      promise.catch(e => console.log(e.message));
-  });
 
-  btnSignUp.addEventListener('click', e=> {
-    const email = txtEmail.value;
-    const pass = txtPassword.value;
+  $btnLogin.on('click', e => {
+    const email = $txtEmail.val();
+    const pass = $txtPassword.val();
     const auth = firebase.auth();
 
-    const promise = auth.createUserWithEmailAndPassword(email, pass);
+    const promise = auth.signInWithEmailAndPassword(email, pass);
     promise.catch(e => console.log(e.message));
   });
 
-  btnLogout.addEventListener('click', e => {
-      firebase.auth().signOut();
+  $btnSignUp.on('click', e => {
+    const email = $txtEmail.val();
+    const pass = $txtPassword.val();
+    const auth = firebase.auth();
+
+    const promise = auth.createUserWithEmailAndPassword(email, pass);
+    // promise.catch(authError(error));
+  });
+
+  $btnLogOut.on('click', e => {
+    console.log('click');
+    firebase.auth().signOut();
   });
 
   firebase.auth().onAuthStateChanged(firebaseUser => {
-      if (firebaseUser) {
-          console.log(firebaseUser);
-            btnLogout.classList.remove('hide');
+    if (firebaseUser) {
+      // window.alert(`Welcome ${firebaseUser.email}`);
+      console.log(firebaseUser.email);
+      $('#main-div').addClass('hidden');
+      $btnLogOut.removeClass('hidden');
 
-      }else {
-          console.log('not logged in');
-          btnLogout.classList.add('hide');
-      }
+
+    } else {
+      console.log('not logged in');
+      $btnLogOut.addClass('hidden');
+      $('#main-div').removeClass('hidden');
+
+    }
   });
 
-
-
 }());
+
+// function authError(error){
+//   console.log(error);
+//   console.log('here now');
+// if(error.message =='The email address is badly formatted'){
+//   $('#txtEmail').val('This email is not acceptable, please enter a real email');
+// }
+
+// }

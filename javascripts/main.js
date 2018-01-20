@@ -7,4 +7,3 @@ let fbConfig = require('./config/fbConfig');
 
 const fbURL = "https://stealth-turmoil.firebaseio.com";
 const $ = require("jquery");
-
