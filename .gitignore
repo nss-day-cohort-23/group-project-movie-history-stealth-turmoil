@@ -4,3 +4,4 @@ stylesheets/
 dist/
 package-lock.json
 .DS_Store
+javascripts/config/fbCreds.js
