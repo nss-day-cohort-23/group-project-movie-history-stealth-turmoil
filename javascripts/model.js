@@ -16,8 +16,7 @@ let $errorArea = $('#errorArea');
 
 
 
-(function doTheThing() {
-
+(function setListeners() {
 
   // I had to comment this out for it to work. I am not sure why???
   //firebase.initializeApp(config);
