@@ -14,7 +14,7 @@ let $btnSignUp = $('#btnSignUp');
 let $btnLogOut = $('#btnLogOut');
 let $errorArea = $('#errorArea');
 let $newAccount = $('#newAccount');
-
+let auth = firebase.auth();
 (function setListeners() {
 
 
@@ -22,7 +22,6 @@ let $newAccount = $('#newAccount');
     $errorArea.empty();
     let email = $txtEmail.val();
     let pass = $txtPassword.val();
-    let auth = firebase.auth();
 
     const promise = auth.signInWithEmailAndPassword(email, pass);
     promise.catch(function (error) {
@@ -37,7 +36,6 @@ let $newAccount = $('#newAccount');
     $errorArea.empty();
     const email = $txtEmail.val();
     const pass = $txtPassword.val();
-    const auth = firebase.auth();
     const displayName = $('userName').val();
     const promise = auth.createUserWithEmailAndPassword(email, pass)
       .then(authData => {
@@ -51,10 +49,10 @@ let $newAccount = $('#newAccount');
   });
 
   $btnLogOut.on('click', e => {
-    firebase.auth().signOut();
+    auth.signOut();
   });
 
-  firebase.auth().onAuthStateChanged(firebaseUser => {
+  auth.onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
       $('#main-div').addClass('hidden');
       $btnLogOut.removeClass('hidden');
