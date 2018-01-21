@@ -5,7 +5,7 @@ const cred = require('./config/fbCreds');
 
 require("firebase/auth");
 
-module.exports(function() {
+module.exports.fbAccount = () => {
 
     // I had to comment this out for it to work. I am not sure why???
     //firebase.initializeApp(config);
@@ -14,7 +14,7 @@ module.exports(function() {
   const txtPassword = document.getElementById('txtPassword');
   const btnLogin = document.getElementById('btnLogin');
   const btnSignUp = document.getElementById('btnSignUp');
-  const btnLogout = document.getElementById('btnLogout');
+  const btnLogout = document.getElementById('btnLogOut');
 
   btnLogin.addEventListener('click', e => {
       const email = txtEmail.value;
@@ -48,7 +48,4 @@ module.exports(function() {
           btnLogout.classList.add('hide');
       }
   });
-
-
-
-}());
+};
