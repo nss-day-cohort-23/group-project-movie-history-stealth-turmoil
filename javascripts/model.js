@@ -15,16 +15,17 @@ let $btnLogOut = $('#btnLogOut');
 let $errorArea = $('#errorArea');
 let $newAccount = $('#newAccount');
 let auth = firebase.auth();
-(function setListeners() {
 
+
+(function setListeners() {
 
   $btnLogin.on('click', e => {
     $errorArea.empty();
     let email = $txtEmail.val();
     let pass = $txtPassword.val();
 
-    const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(function (error) {
+    auth.signInWithEmailAndPassword(email, pass)
+    .catch(function (error) {
       authError(error);
     });
   });
@@ -36,14 +37,15 @@ let auth = firebase.auth();
     $errorArea.empty();
     const email = $txtEmail.val();
     const pass = $txtPassword.val();
-    const displayName = $('userName').val();
-    const promise = auth.createUserWithEmailAndPassword(email, pass)
+
+    auth.createUserWithEmailAndPassword(email, pass)
+    
       .then(authData => {
         let $userName = $('#userName').val();
         firebase.database().ref("users").child(authData.uid).set({ name: $userName, email: authData.email });
         window.alert(`Welcome ${$userName}`);
-      });
-    promise.catch(function (error) {
+      })
+    .catch(function (error) {
       authError(error);
     });
   });
@@ -85,6 +87,8 @@ function authError(error) {
     case 'The email address is already in use by another account.':
       $errorArea.html('There is already an account associated with this email address.');
       break;
-
+    case 'The password is invalid or the user does not have a password.':
+    $errorArea.html('The password you entered is incorrect, please try again');
+      break;
   }
 }
