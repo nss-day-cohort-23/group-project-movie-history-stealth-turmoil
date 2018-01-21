@@ -1,12 +1,15 @@
 'use strict';
 
 const $ = require('jquery');
+const model = require('./model');
 
 function timedPrint(movies, time){
     //within a certain time frame...
     setTimeout(function(){
         //prints each movie of sub array to the DOM
         movies.forEach(m => $("#output").append(`${m} `));
+    //offsets each print by factoring the time w/ index
+    //3*1,3*2,3*3
     }, 3000 * time);
 }
 
@@ -44,3 +47,27 @@ function splitData() {
 }
 
 splitData();
+
+let allMovies = [];
+
+function getMoreMovies(i){
+    model.getMovies(i)
+        .then((movieData) => 
+            movieData.results.forEach(m => allMovies.push(m))
+    );
+}
+
+
+function moreMovies (firstMovies, totalPages) {
+    allMovies = [];
+    firstMovies.forEach(i=>allMovies.push(i));
+    for (let i=2;i<30;i++){
+        getMoreMovies(i);
+    }
+    allMovies.sort((a,b)=>b.popularity - a.popularity);
+    console.log(allMovies);
+}
+
+
+model.getMoviesInit()
+    .then((initData) => moreMovies(initData.results, initData.total_pages));
