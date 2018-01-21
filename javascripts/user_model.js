@@ -3,6 +3,7 @@
 const firebase = require("./config/fbConfig");
 const cred = require('./config/fbCreds');
 const $ = require('jquery');
+let user_view = require('./user_view');
 require("firebase/auth");
 let auth = firebase.auth();
 let $errorArea = $('#errorArea');
@@ -17,7 +18,7 @@ $errorArea.empty();
 
     auth.signInWithEmailAndPassword(email, pass)
     .catch(function (error) {
-      authError(error);
+      user_view.authError(error);
     });
 };
 
@@ -38,7 +39,7 @@ module.exports.newAccount = () => {
       window.alert(`Welcome ${$userName}`);
     })
   .catch(function (error) {
-    authError(error);
+    user_view.authError(error);
   });
 };
 module.exports.logOut = () => {
@@ -57,28 +58,5 @@ auth.onAuthStateChanged(firebaseUser => {
   }
 });
 
-function authError(error) {
-  console.log(error.message);
-  let errMessage = error.message;
-  switch (errMessage) {
-    case 'The email address is badly formatted.':
-      if ($txtEmail.val() == '') {
-        $errorArea.html('You must enter your Email Address');
-      } else if ($txtPassword.val() == '') {
-        $errorArea.html('You must enter a password');
-      } else {
-        $errorArea.html('This email is not acceptable, please enter a real email');
-      }
-      break;
-    case 'The password must be 6 characters long or more.':
-      $errorArea.html(error);
-      break;
-    case 'The email address is already in use by another account.':
-      $errorArea.html('There is already an account associated with this email address.');
-      break;
-    case 'The password is invalid or the user does not have a password.':
-    $errorArea.html('The password you entered is incorrect, please try again');
-      break;
-  }
-}
+
 
