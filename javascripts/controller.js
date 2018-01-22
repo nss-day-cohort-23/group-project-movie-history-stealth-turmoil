@@ -61,9 +61,13 @@ function getMoreMovies(page){
         //gets API data to page# given
         model.getMovies(page)
             //prints each movies to the DOM
-            .then((movieData) => 
-                movieData.results.forEach(m => view.printMovie(m)));
-                //sends requests in 10 sec increments
+            .then((movieData) => {
+                movieData.results.sort((a, b) => b.popularity - a.popularity);
+                movieData.results.forEach(m =>{ 
+                    model.getCast(m.id)
+                        .then(creditsData => view.printMovie(m, creditsData.cast));
+                    });
+                });  //sends requests in 10 sec increments
             }, 10000 * (page-1));
 }
 
@@ -72,7 +76,10 @@ function initialMovies (firstMovies, totalPages) {
     //sorts first set of movies by popularity
     firstMovies.sort((a,b)=>b.popularity - a.popularity);
     //sends each movie to be printed to DOM
-    firstMovies.forEach(i=>view.printMovie(i));
+    firstMovies.forEach(i=>{
+        model.getCast(i.id)
+            .then(creditsData => view.printMovie(i, creditsData.cast));
+    });
     //sends each remaining page number to setTimout function
     for (let i=2;i<(totalPages+1);i++){
         getMoreMovies(i);
