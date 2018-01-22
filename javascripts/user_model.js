@@ -53,7 +53,7 @@ auth.onAuthStateChanged(firebaseUser => {
   } else {
     console.log('not logged in');
     $('#btnLogOut').addClass('hidden');
-    $('#main-div').removeClass('hidden');
+    // $('#main-div').removeClass('hidden');
 
   }
 });
