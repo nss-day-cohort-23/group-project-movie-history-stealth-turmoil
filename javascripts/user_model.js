@@ -2,7 +2,7 @@
 
 const firebase = require("./config/fbConfig");
 const cred = require('./config/fbCreds');
-const $ = require('jquery');
+// const $ = require('jquery');
 let user_view = require('./user_view');
 require("firebase/auth");
 let auth = firebase.auth();

@@ -1,5 +1,5 @@
 'use strict';
-let $ = require('jquery');
+// let $ = require('jquery');
 let $errorArea = $('#errorArea');
 let $txtEmail = $('#txtEmail');
 let $txtPassword = $('#txtPassword');

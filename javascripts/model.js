@@ -1,6 +1,6 @@
 'use strict';
 
-const $ = require('jquery');
+// const $ = require('jquery');
 
 
 module.exports.getCast = (movieID) => {

@@ -1,5 +1,5 @@
 'use strict';
-let $ = require('jquery');
+// let $ = require('jquery');
 let user_model = require('./user_model');
 
 let $txtEmail = $('#txtEmail');

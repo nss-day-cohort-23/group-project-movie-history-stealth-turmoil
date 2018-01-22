@@ -3,7 +3,7 @@
 let firebase = require('firebase');
 let model = require('./model');
 let control = require('./controller');
-const $ = require("jquery");
+// const $ = require("jquery");
 
 module.exports.printMovie = (movie, cast) => {
     if (movie.poster_path !== null) {

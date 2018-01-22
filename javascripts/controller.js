@@ -1,6 +1,6 @@
 'use strict';
 
-const $ = require('jquery');
+// const $ = require('jquery');
 const model = require('./model');
 const view = require('./view');
 
@@ -81,9 +81,9 @@ function initialMovies (firstMovies, totalPages) {
             .then(creditsData => view.printMovie(i, creditsData.cast));
     });
     //sends each remaining page number to setTimout function
-    for (let i=2;i<(totalPages+1);i++){
-        getMoreMovies(i);
-    }
+    // for (let i=2;i<(totalPages+1);i++){
+    //     getMoreMovies(i);
+    // }
 }
 
 //fetches page 1 (20movies); 

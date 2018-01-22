@@ -5,11 +5,16 @@ let model = require('./model');
 let control = require('./controller');
 const cred = require('./config/fbCreds');
 let fbConfig = require('./config/fbConfig');
+let rateyo = require('./rateyo');
+//const $ = require('jquery');
+
+
 
 const fbURL = "https://stealth-turmoil.firebaseio.com";
-const $ = require("jquery");
 
 
 $(document).ready(function() {
+  
+  rateyo.rate();
   user_controller.activateListeners();
 });
