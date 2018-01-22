@@ -2,6 +2,7 @@
 const user_controller = require('./user_controller');
 let firebase = require('firebase');
 let model = require('./model');
+let control = require('./controller');
 const cred = require('./config/fbCreds');
 let fbConfig = require('./config/fbConfig');
 
