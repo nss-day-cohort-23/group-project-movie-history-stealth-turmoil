@@ -17,7 +17,7 @@ module.exports.printMovie = (movie, cast) => {
         $("#output").append(
             `<div class="movieCard" id="${movie.id}">
                 <img src="../images/no-poster.png">
-                <h3>${movie.title} (${movie.release_date.slice(0, 4)})<h3>
+                <h3>${movie.title} (${movie.release_date.slice(0, 4)})</h3>
                 <p><strong>Cast:</strong> ${cast[0].name}, ${cast[1].name}, ${cast[2].name}</p>
             </div>`);
     }
