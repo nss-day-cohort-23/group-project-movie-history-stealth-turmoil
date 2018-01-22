@@ -7,7 +7,8 @@ require("firebase/auth");
 
 let config = {
   apiKey: fbCreds.apiKey,
-  authDomain: fbCreds.authDomain
+  authDomain: fbCreds.authDomain,
+  databaseURL: fbCreds.databaseURL
 };
 
 firebase.initializeApp(config);
