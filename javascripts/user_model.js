@@ -10,6 +10,7 @@ let $errorArea = $('#errorArea');
 let $txtEmail = $('#txtEmail');
 let $txtPassword = $('#txtPassword');
 let currentUser;
+
 let fbUrl = 'https://stealth-turmoil.firebaseio.com/';
 module.exports.login = () => {
   $errorArea.empty();
@@ -65,12 +66,12 @@ auth.onAuthStateChanged(firebaseUser => {
 
 
 module.exports.addMovie = (movieData) => {
-  let id = currentUser.uid;
+  let uid = currentUser.uid;
   movieData.uid = currentUser.uid;
   console.log(movieData, 'data');
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: fbUrl + `users/${id}/watchlist.json`,
+      url: fbUrl + `watchlist.json`,
       method: "POST",
       data: JSON.stringify(movieData)
     }).done(data => {
@@ -81,22 +82,25 @@ module.exports.addMovie = (movieData) => {
 
 
 function getWatchList() {
-  let id = currentUser.uid;
+  let uid = currentUser.uid;
+  // console.log(id, 'id');
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: fbUrl + `users/${id}/watchlist.json`,
+      url: fbUrl + `watchlist.json?orderBy="uid"&equalTo="${uid}"`
+
     }).done(movieList => {
       resolve(movieList);
     });
   });
 }
-module.exports.postWatchlist = () => {
+module.exports.postWatchlist = (uid) => {
   getWatchList().then(movieList => {
     showWatchlist(movieList);
   });
 };
 
 function showWatchlist(movieList) {
+  console.log(movieList);
   let listArray = [];
   let keys = Object.keys(movieList);
   keys.forEach(key => {
