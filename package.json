@@ -27,8 +27,10 @@
     "grunt-contrib-watch": "^1.0.0",
     "install": "^0.10.2",
     "jquery": "^3.3.1",
+    "jrating": "^1.0.1",
     "matchdep": "^2.0.0",
-    "npm": "^5.6.0"
+    "npm": "^5.6.0",
+    "rateyo": "^2.3.3"
   },
   "devDependencies": {
     "handlebars": "^4.0.11",

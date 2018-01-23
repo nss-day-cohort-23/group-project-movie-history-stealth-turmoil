@@ -2,7 +2,7 @@
 
 const firebase = require("./config/fbConfig");
 const cred = require('./config/fbCreds');
-const $ = require('jquery');
+// const $ = require('jquery');
 let user_view = require('./user_view');
 require("firebase/auth");
 let auth = firebase.auth();
@@ -66,6 +66,7 @@ auth.onAuthStateChanged(firebaseUser => {
 
 
 
+
 module.exports.addMovie = (movieData) => {
   let id = currentUser.uid;
   movieData.uid = currentUser.uid;
@@ -107,4 +108,5 @@ function showWatchlist(movieList) {
   });
   user_view.printWatchList(listArray);
 }
+
 
