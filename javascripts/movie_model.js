@@ -37,4 +37,30 @@ module.exports.getMoviesInit = () => {
     });
 };
 
+module.exports.addRating = () => {
+    let uid = currentUser.uid;
+    return new Promise(function (resolve,reject){
+    //getwatchlists(
+        $.ajax({
+            url: "https://stealth-turmoil.firebaseio.com/watchlist.json",
+        })
+        .done((myMovies) => {
+            resolve(myMovies);
+        });
+    .then({
+      if( movie.id === $(this)){
+      
+        $.ajax({
+            url: fbUrl + `users/${id}/watchlist.json`,
+            method: "POST",
+            data:  movie.rating === this.rating
+        }).done(data => {
+            resolve (myMovies);
+        });
+    }
+  });
+    //movie rating update (rating number);
+//user id === current id
+
+//movie id === movie id of click
 

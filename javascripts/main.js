@@ -7,12 +7,11 @@ const cred = require('./config/fbCreds');
 let fbConfig = require('./config/fbConfig');
 let rateyo = require('./rateyo');
 //const $ = require('jquery');
-
-
-
 const fbURL = "https://stealth-turmoil.firebaseio.com";
+
+
 $(document).ready(function() {
-  
   user_controller.activateListeners();
 });
 rateyo.rate();
+
