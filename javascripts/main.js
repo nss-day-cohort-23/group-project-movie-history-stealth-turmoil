@@ -5,11 +5,13 @@ let movie_model = require('./movie_model');
 let movie_control = require('./movie_controller');
 const cred = require('./config/fbCreds');
 let fbConfig = require('./config/fbConfig');
-
+let rateyo = require('./rateyo');
+//const $ = require('jquery');
 const fbURL = "https://stealth-turmoil.firebaseio.com";
-const $ = require("jquery");
 
 
 $(document).ready(function() {
   user_controller.activateListeners();
 });
+rateyo.rate();
+

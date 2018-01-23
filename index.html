@@ -7,83 +7,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Stealth Turmoil</title>
-  <link rel="stylesheet" href="stylesheets/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-    crossorigin="anonymous">
-
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="node_modules/rateyo/min/jquery.rateyo.min.css" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="stylesheets/main.css">
 
 </head>
 
 <body>
+
+  
   <div id="navbar">
     <button id="btnLogOut" class=" btn-action login-button btn-primary btn-sm hidden  ">Log Out</button>
   </div>
+
+  <div id="tabs"><h4><a href="#">Results/</a><h4><a href="#">Unwatched/</a><h4><a href="#">Watched/</a><h4><a href="#">Favorites</a></div>
+  
+  <div class="main-login main-center hidden" id='main-div'>
+
   <button id='showList'></button>
   <div id='watchlist'>
   </div>
   <!-- <button id='stopTime'></button> -->
   <div class="main-login main-center" id='main-div'>
+
     <!-- <form class="form-horizontal" method="post" action="#"> -->
-        <p id='errorArea'></p>
-
-    <div class="form-group hidden signup" id="userBox">
-      <label for="userName" class="cols-sm-2 control-label">User Name</label>
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-user fa" aria-hidden="true"></i>
-          </span>
-          <input type="text" class="form-control" name="userName" id="userName" placeholder="Enter your name" />
+      <p id='errorArea'></p>
+      
+      <div class="form-group hidden signup" id="userBox">
+        <label for="userName" class="cols-sm-2 control-label">User Name</label>
+        <div class="cols-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-user fa" aria-hidden="true"></i>
+            </span>
+            <input type="text" class="form-control" name="userName" id="userName" placeholder="Enter your name" />
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label for="txtEmail" class="cols-sm-2 control-label">Email</label>
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-envelope fa" aria-hidden="true"></i>
-          </span>
-          <input type="email" class="form-control" name="email" id="txtEmail" placeholder="Enter your Email" />
+      
+      <div class="form-group">
+        <label for="txtEmail" class="cols-sm-2 control-label">Email</label>
+        <div class="cols-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-envelope fa" aria-hidden="true"></i>
+            </span>
+            <input type="email" class="form-control" name="email" id="txtEmail" placeholder="Enter your Email" />
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label for="txtPassword" class="cols-sm-2 control-label">Password</label>
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
-          </span>
-          <input type="password" class="form-control" name="password" id="txtPassword" placeholder="Enter your Password" />
+      
+      <div class="form-group">
+        <label for="txtPassword" class="cols-sm-2 control-label">Password</label>
+        <div class="cols-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+            </span>
+            <input type="password" class="form-control" name="password" id="txtPassword" placeholder="Enter your Password" />
+          </div>
         </div>
       </div>
+      
+      
+      <div class="login-register">
+        <button id="btnLogin" class="login-button btn-primary btn-sm btn-block login">Login</button>
+        <button id="newAccount" class="login-button btn-primary btn-sm btn-block login">Create Account</button>
+        
+        <button id="btnSignUp" class="login-button btn-primary btn-sm btn-block hidden signup">Sign Up</button>
+        
+      </div>
+      
+      
+      <!-- </form> -->
     </div>
-
-
-    <div class="login-register">
-      <button id="btnLogin" class="login-button btn-primary btn-sm btn-block login">Login</button>
-      <button id="newAccount" class="login-button btn-primary btn-sm btn-block login">Create Account</button>
-
-      <button id="btnSignUp" class="login-button btn-primary btn-sm btn-block hidden signup">Sign Up</button>
-
-    </div>
-
-
-    <!-- </form> -->
-  </div>
-  <div id="mainContainer">
-    <div id="leftHandContainer">
-      <div id="output"></div>
-
-    </div>
-    <!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script> -->
-    <script src="dist/bundle.js"></script>
-</body>
-
+    <div id="mainContainer">
+      <div id="leftHandContainer">
+        <div id="output"></div>
+        
+      </div>
+      <!-- <div id="rate"></div> -->
+      <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+      <!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script> -->
+      <script type="text/javascript" src="node_modules/rateyo/min/jquery.rateyo.min.js"></script>
+      <script src="dist/bundle.js"></script>
+    </body>
+    
 </html>
