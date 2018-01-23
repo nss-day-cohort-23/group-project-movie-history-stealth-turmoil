@@ -16,7 +16,7 @@ module.exports.login = () => {
   let email = $('#txtEmail').val();
   let pass = $('#txtPassword').val();
 
-  auth.signInWithEmailAndPassword(email, pass)
+  auth.signInWithEmailAndPassword($('#txtEmail').val(), $('#txtPassword').val())
     .catch(function (error) {
       user_view.authError(error);
     });
@@ -32,7 +32,7 @@ module.exports.signUp = () => {
   const email = $txtEmail.val();
   const pass = $txtPassword.val();
 
-  auth.createUserWithEmailAndPassword(email, pass)
+  auth.createUserWithEmailAndPassword($('#txtEmail').val(), $('#txtPassword').val())
     .then(authData => {
       let $userName = $('#userName').val();
       firebase.database().ref("users").child(authData.uid).set({ name: $userName, email: authData.email });

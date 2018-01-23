@@ -41,15 +41,15 @@ function writeCast(cast){
 
 
 module.exports.printTopMovies = (movies) => {
-  $("#output").append(`
+  $("#formPrompt").append(`
         <div class="jumbotron">
         <p class="lead">Welcome to...</p>
         <h1 class="display-3">Stealthy Turmoil!</h1>
         <p class="lead">A movie search engine designed to divert all feelings of impending doom & help procrastinate on really important tasks!</p>
         <hr class="my-4">
             <p>To see more movie details (like cast members or cast members) or make a confusing list of movies you can't see: please create an account</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" id="createLogin" role="button">Create Account</a>
+            <p class="lead" id="jumboBtns">
+                <a class="btn btn-primary btn-lg" id="accountLoad" role="button">Create Account or Sign In</a>
             </p>
         </div>`);
   $("#output").append(`<h1 class="display-4" id="topTitle">Movies people watch....</h1><br>`);
