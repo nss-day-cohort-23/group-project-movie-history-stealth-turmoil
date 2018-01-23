@@ -4,6 +4,24 @@ let $errorArea = $('#errorArea');
 let $txtEmail = $('#txtEmail');
 let $txtPassword = $('#txtPassword');
 
+
+module.exports.printWatchList = (listArray) =>{
+  listArray.forEach(movie =>{
+
+  $("#watchlist").append(
+
+    `<div class="movieCard">
+      <img class='image'src=${movie.img}>
+      <h3 class='title'>${movie.title}</h3>
+       <h3 class='date'>${movie.date}</h3>
+      <p class='cast'>${movie.cast}</p>
+      </div>`);
+    
+  });
+
+};
+
+
 module.exports.authError= (error)=> {
 
   let errMessage = error.message;

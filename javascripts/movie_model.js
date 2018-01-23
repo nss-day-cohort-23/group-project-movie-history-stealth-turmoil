@@ -10,6 +10,7 @@ module.exports.getCast = (movieID) => {
         })
             .done((castData) => {
                 resolve(castData);
+                // console.log(castData);
             });
     });
 };
@@ -18,7 +19,7 @@ module.exports.getCast = (movieID) => {
 module.exports.getMovies = (i) => {
     return new Promise(function (resolve, reject) {
         $.ajax({
-            "url": `https://api.themoviedb.org/3/search/movie?include_adult=false&query=%27war%27&page=${i}&language=en-US&api_key=b7770e2d95281d16626611ba20512744`
+            "url": `https://api.themoviedb.org/3/search/movie?include_adult=false&query=%27alfred%27&page=${i}&language=en-US&api_key=b7770e2d95281d16626611ba20512744`
         })
         .done((movieData) => {
             resolve(movieData);
@@ -29,7 +30,7 @@ module.exports.getMovies = (i) => {
 module.exports.getMoviesInit = () => {
     return new Promise(function (resolve, reject) {
         $.ajax({
-            "url": "https://api.themoviedb.org/3/search/movie?include_adult=false&query=%27war%27&language=en-US&api_key=b7770e2d95281d16626611ba20512744"
+            "url": "https://api.themoviedb.org/3/search/movie?include_adult=false&query=%27alfred%27&language=en-US&api_key=b7770e2d95281d16626611ba20512744"
         })
         .done((initData) => {
             resolve(initData);
