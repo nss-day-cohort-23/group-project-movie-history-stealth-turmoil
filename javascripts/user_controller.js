@@ -18,4 +18,24 @@ module.exports.activateListeners = () =>{
 
   $btnLogOut.click(user_model.logOut);
 
+  $('#showList').click(user_model.postWatchlist);
 };
+
+$(document).on('click', ".addMovie", function() {
+  let movieId =  this.id;
+  let movieTitle = $(this).siblings('.title').html();
+  let movieDate = $(this).siblings('.date').html();
+  let movieCast = $(this).siblings('.cast').html();
+  let movieImg = $(this).siblings('.image')[0].src;
+  
+  let movieObj ={ 
+    movieId: movieId,
+    title: movieTitle,
+    date: movieDate,
+    cast: movieCast,
+    img: movieImg
+  };
+  user_model.addMovie(movieObj);
+
+  
+});
