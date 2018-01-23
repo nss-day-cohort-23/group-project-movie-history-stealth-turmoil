@@ -24,7 +24,7 @@ $(document).on("click", ".rate",  function(){
     /* get rating */
     var rating = $rateYo.rateYo("rating");
     
-    window.alert("Its " + rating + " Yo!");
+    window.alert("Its " + rating *2 + " Yo!");
 });
 
 
