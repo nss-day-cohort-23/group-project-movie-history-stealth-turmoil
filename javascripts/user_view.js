@@ -18,9 +18,7 @@ module.exports.printWatchList = (listArray) =>{
       </div>`);
     
   });
-
 };
-
 
 module.exports.authError= (error)=> {
 
@@ -45,5 +43,63 @@ module.exports.authError= (error)=> {
     $errorArea.html('The password you entered is incorrect, please try again');
       break;
   }
+};
 
+module.exports.userSignUp = () => {
+  $("#formPrompt").append(`
+    <div class= "main-login main-center" id = 'main-div'>
+    <p id='errorArea'></p>
+
+    <div class="form-group hidden signup" id="userBox">
+      <label for="userName" class="cols-sm-2 control-label">User Name</label>
+      <div class="cols-sm-10">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-user fa" aria-hidden="true"></i>
+          </span>
+          <input type="text" class="form-control" name="userName" id="userName" placeholder="Enter your name" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="txtEmail" class="cols-sm-2 control-label">Email</label>
+      <div class="cols-sm-10">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-envelope fa" aria-hidden="true"></i>
+          </span>
+          <input type="email" class="form-control" name="email" id="txtEmail" placeholder="Enter your Email" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="txtPassword" class="cols-sm-2 control-label">Password</label>
+      <div class="cols-sm-10">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+          </span>
+          <input type="password" class="form-control" name="password" id="txtPassword" placeholder="Enter your Password" />
+        </div>
+      </div>
+    </div>
+
+
+    <div class="login-register">
+      <button id="btnLogin" class="login-button btn-primary btn-sm btn-block login">Login</button>
+      <button id="newAccount" class="login-button btn-primary btn-sm btn-block login">Create Account</button>
+
+      <button id="btnSignUp" class="login-button btn-primary btn-sm btn-block hidden signup">Sign Up</button>
+
+    </div>
+  </div >
+  `);
+};
+
+module.exports.searchBar = () => {
+  $("#formPrompt").empty();
+  $("#output").empty();
+  $("#formPrompt").append(`<input type="text" id="movieSearch">`);
 };

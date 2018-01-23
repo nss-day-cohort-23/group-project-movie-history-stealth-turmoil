@@ -4,6 +4,8 @@ const movie_model = require('./movie_model');
 const movie_view = require('./movie_view');
 
 
+
+
 function timedPrint(movies, time){
     //within a certain time frame...
     setTimeout(function(){
@@ -54,13 +56,12 @@ function bundleData() {
 
 
 
-// let allMovies = [];
-
-function getMoreMovies(page){
+function getMoreMovies(page, searchText){
 // start setTimeout for each API request
-    setTimeout(function () {
+    let timer = setTimeout(function () {
         //gets API data to page# given
-        movie_model.getMovies(page)
+
+        movie_model.getMovies(page, searchText)
             //prints each movies to the DOM
             .then((movieData) => {
                 movieData.results.sort((a, b) => b.popularity - a.popularity);
@@ -70,13 +71,23 @@ function getMoreMovies(page){
                     });
                 });  //sends requests in 10 sec increments
 
-            }, 10000 * (page-1));
-
-            }, 10500 * (page-1));
+            }, 10500 * (page-1));            
+    $("#movieSearch").on("click", function() {
+        clearTimeout(timer);
+        // setTimeout(loadEnter(), 5000);
+    });  
 }
 
 
-function initialMovies (firstMovies, totalPages) {
+//             // }, 10000 * (page-1));
+//             // // }, 10000 * (page-1));
+
+//             }, 10500 * (page-1));
+
+// }
+
+function initialMovies (firstMovies, totalPages, searchText) {
+    console.log(firstMovies);
     //sorts first set of movies by popularity
     firstMovies.sort((a,b)=>b.popularity - a.popularity);
     //sends each movie to be printed to DOM
@@ -91,13 +102,25 @@ function initialMovies (firstMovies, totalPages) {
     // }
 
     for (let i=2;i<(totalPages+1);i++){
-        getMoreMovies(i);
+        getMoreMovies(i, searchText);
     }
 
 }
 
-//fetches page 1 (20movies); 
-//sends those movies plus total #pages
-movie_model.getMoviesInit()
-    .then(movieData=>initialMovies(movieData.results, movieData.total_pages));
-//     .then((initData) => moreMovies(initData.results, initData.total_pages));
+
+
+$(document).on("keypress", "#movieSearch", function(){
+    if (event.keyCode == 13) {
+        let searchText = $(this).val();
+        $(this).val('');
+        $("#output").empty();
+        //fetches page 1 (20movies); 
+        //sends those movies plus total #pages & search text
+        movie_model.getMoviesInit(searchText)
+            .then(movieData=>initialMovies(movieData.results, movieData.total_pages, searchText));
+    }
+});
+
+
+movie_model.getTopMovies()
+    .then((topMovies) => movie_view.printTopMovies(topMovies));

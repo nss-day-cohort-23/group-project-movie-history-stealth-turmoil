@@ -1,6 +1,7 @@
 'use strict';
 // let $ = require('jquery');
 let user_model = require('./user_model');
+let user_view = require('./user_view');
 
 let $txtEmail = $('#txtEmail');
 let $txtPassword = $('#txtPassword');
@@ -9,17 +10,16 @@ let $btnSignUp = $('#btnSignUp');
 let $btnLogOut = $('#btnLogOut');
 let $newAccount = $('#newAccount');
 
-module.exports.activateListeners = () =>{
-  $btnLogin.click(user_model.login);
 
-  $newAccount.click(user_model.newAccount);
+  $(document).on("click", '#btnLogin', user_model.login);
+
+  $(document).on("click", '#newAccount', user_model.newAccount);
   
-  $btnSignUp.click(user_model.signUp);
+  $(document).on("click", '#btnSignUp', user_model.signUp);
 
-  $btnLogOut.click(user_model.logOut);
+  $(document).on("click", '#btnLogOut', user_model.logOut);
 
-  $('#showList').click(user_model.postWatchlist);
-};
+  $('#showList').on("click", user_model.postWatchlist);
 
 $(document).on('click', ".addMovie", function() {
   let movieId =  this.id;
@@ -38,4 +38,11 @@ $(document).on('click', ".addMovie", function() {
   user_model.addMovie(movieObj);
 
   
+});
+
+$(document).on("click", "#accountLoad", function() {
+  console.log("clicked");
+  $("#formPrompt").empty();
+  user_view.userSignUp();
+  // module.exports.activateListeners();
 });
