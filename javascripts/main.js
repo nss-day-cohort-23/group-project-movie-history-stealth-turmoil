@@ -1,8 +1,8 @@
 'use strict';
 const user_controller = require('./user_controller');
 let firebase = require('firebase');
-let model = require('./model');
-let control = require('./controller');
+let movie_model = require('./movie_model');
+let movie_control = require('./movie_controller');
 const cred = require('./config/fbCreds');
 let fbConfig = require('./config/fbConfig');
 let rateyo = require('./rateyo');
@@ -11,8 +11,6 @@ let rateyo = require('./rateyo');
 
 
 const fbURL = "https://stealth-turmoil.firebaseio.com";
-
-
 $(document).ready(function() {
   
   user_controller.activateListeners();

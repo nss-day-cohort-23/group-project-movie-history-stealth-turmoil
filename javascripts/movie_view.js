@@ -1,8 +1,8 @@
 'use strict';
 
 let firebase = require('firebase');
-let model = require('./model');
-let control = require('./controller');
+let movie_model = require('./movie_model');
+let movie_control = require('./movie_controller');
 // const $ = require("jquery");
 let rateyo = require('./rateyo');
 
