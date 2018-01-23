@@ -1,6 +1,5 @@
 'use strict';
 
-// const $ = require('jquery');
 const movie_model = require('./movie_model');
 const movie_view = require('./movie_view');
 
@@ -24,7 +23,9 @@ function movieSplit (movies, splitIndex) {
         //pushes each of those 40ct arrays into a parent array
         splitArr.push(subArr);
     }
+
     console.log(splitArr);
+
     //loop sends each child-array to the timing function w/ timing factor
     for (let j = 0; j < splitArr.length; j++) {
         timedPrint(splitArr[j], (j + 1));
@@ -68,7 +69,10 @@ function getMoreMovies(page){
                         .then(creditsData => movie_view.printMovie(m, creditsData.cast));
                     });
                 });  //sends requests in 10 sec increments
+
             }, 10000 * (page-1));
+
+            }, 10500 * (page-1));
 }
 
 
@@ -81,9 +85,15 @@ function initialMovies (firstMovies, totalPages) {
             .then(creditsData => movie_view.printMovie(i, creditsData.cast));
     });
     //sends each remaining page number to setTimout function
+
     // for (let i=2;i<(totalPages+1);i++){
     //     getMoreMovies(i);
     // }
+
+    for (let i=2;i<(totalPages+1);i++){
+        getMoreMovies(i);
+    }
+
 }
 
 //fetches page 1 (20movies); 
