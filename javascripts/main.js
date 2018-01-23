@@ -15,6 +15,6 @@ const fbURL = "https://stealth-turmoil.firebaseio.com";
 
 $(document).ready(function() {
   
-  rateyo.rate();
   user_controller.activateListeners();
 });
+rateyo.rate();
