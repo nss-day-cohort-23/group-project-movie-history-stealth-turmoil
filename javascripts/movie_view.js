@@ -51,8 +51,8 @@ module.exports.printTopMovies = (movies) => {
             <p class="lead" id="jumboBtns">
                 <a class="btn btn-primary btn-lg" id="accountLoad" role="button">Create Account or Sign In</a>
             </p>
-        </div>`);
-  $("#output").append(`<h1 class="display-4" id="topTitle">Movies people watch....</h1><br>`);
+        </div>
+        <h1 class="display-4" id="topTitle"> Movies people watch....</h1>`);
   movies.results.sort((a, b) => b.popularity - a.popularity);
   movies.results.forEach(movie => {
     if (movie.poster_path !== null) {

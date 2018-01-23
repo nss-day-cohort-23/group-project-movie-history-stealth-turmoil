@@ -18,9 +18,7 @@ module.exports.printWatchList = (listArray) =>{
       </div>`);
     
   });
-
 };
-
 
 module.exports.authError= (error)=> {
 
@@ -98,4 +96,10 @@ module.exports.userSignUp = () => {
     </div>
   </div >
   `);
+};
+
+module.exports.searchBar = () => {
+  $("#formPrompt").empty();
+  $("#output").empty();
+  $("#formPrompt").append(`<input type="text" id="movieSearch">`);
 };

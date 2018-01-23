@@ -17,6 +17,7 @@ module.exports.login = () => {
   let pass = $('#txtPassword').val();
 
   auth.signInWithEmailAndPassword($('#txtEmail').val(), $('#txtPassword').val())
+    .then(() => user_view.searchBar())
     .catch(function (error) {
       user_view.authError(error);
     });
@@ -37,6 +38,7 @@ module.exports.signUp = () => {
       let $userName = $('#userName').val();
       firebase.database().ref("users").child(authData.uid).set({ name: $userName, email: authData.email });
       window.alert(`Welcome ${$userName}`);
+      user_view.searchBar();
     })
     .catch(function (error) {
       user_view.authError(error);

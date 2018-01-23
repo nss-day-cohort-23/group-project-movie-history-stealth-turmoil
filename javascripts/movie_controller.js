@@ -43,24 +43,20 @@ function initialMovies (firstMovies, totalPages, searchText) {
 }
 
 
-function loadEnter() {
-    $("#movieSearch").keypress(function(){
-        if (event.keyCode == 13) {
-            let searchText = $(this).val();
-            $(this).val('');
-            $("#output").empty();
-            //fetches page 1 (20movies); 
-            //sends those movies plus total #pages & search text
-            movie_model.getMoviesInit(searchText)
-                .then(movieData=>initialMovies(movieData.results, movieData.total_pages, searchText));
-        }
-    });
-}
 
-function loadPage() {
-    loadEnter();
-    movie_model.getTopMovies()
-        .then((topMovies) => movie_view.printTopMovies(topMovies));
-}
+$(document).on("keypress", "#movieSearch", function(){
+    if (event.keyCode == 13) {
+        let searchText = $(this).val();
+        $(this).val('');
+        $("#output").empty();
+        //fetches page 1 (20movies); 
+        //sends those movies plus total #pages & search text
+        movie_model.getMoviesInit(searchText)
+            .then(movieData=>initialMovies(movieData.results, movieData.total_pages, searchText));
+    }
+});
 
-loadPage();
+
+movie_model.getTopMovies()
+    .then((topMovies) => movie_view.printTopMovies(topMovies));
+
