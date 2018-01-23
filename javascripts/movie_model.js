@@ -21,6 +21,7 @@ module.exports.getCast = (movieID) => {
         })
             .done((castData) => {
                 resolve(castData);
+                // console.log(castData);
             });
     });
 };

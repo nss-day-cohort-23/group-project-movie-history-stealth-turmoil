@@ -1,21 +1,23 @@
 'use strict';
 
 const $ = require('jquery');
-const model = require('./model');
-const view = require('./view');
+const movie_model = require('./movie_model');
+const movie_view = require('./movie_view');
+
 
 
 function getMoreMovies(page, searchText){
 // start setTimeout for each API request
     let timer = setTimeout(function () {
         //gets API data to page# given
-        model.getMovies(page, searchText)
+
+        movie_model.getMovies(page, searchText)
             //prints each movies to the DOM
             .then((movieData) => {
                 movieData.results.sort((a, b) => b.popularity - a.popularity);
                 movieData.results.forEach(m =>{ 
-                    model.getCast(m.id)
-                        .then(creditsData => view.printMovie(m, creditsData.cast));
+                    movie_model.getCast(m.id)
+                        .then(creditsData => movie_view.printMovie(m, creditsData.cast));
                     });
                 });  //sends requests in 10 sec increments
             }, 10500 * (page-1));            
@@ -31,8 +33,8 @@ function initialMovies (firstMovies, totalPages, searchText) {
     firstMovies.sort((a,b)=>b.popularity - a.popularity);
     //sends each movie to be printed to DOM
     firstMovies.forEach(i=>{
-        model.getCast(i.id)
-            .then(creditsData => view.printMovie(i, creditsData.cast));
+        movie_model.getCast(i.id)
+            .then(creditsData => movie_view.printMovie(i, creditsData.cast));
     });
     //sends each remaining page number to setTimout function
     for (let i=2;i<(totalPages+1);i++){
@@ -49,17 +51,16 @@ function loadEnter() {
             $("#output").empty();
             //fetches page 1 (20movies); 
             //sends those movies plus total #pages & search text
-            model.getMoviesInit(searchText)
+            movie_model.getMoviesInit(searchText)
                 .then(movieData=>initialMovies(movieData.results, movieData.total_pages, searchText));
-            // $("#movieSearch").val("");
         }
     });
 }
 
 function loadPage() {
     loadEnter();
-    model.getTopMovies()
-        .then((topMovies)=>view.printTopMovies(topMovies));
+    movie_model.getTopMovies()
+        .then((topMovies) => movie_view.printTopMovies(topMovies));
 }
 
 loadPage();
