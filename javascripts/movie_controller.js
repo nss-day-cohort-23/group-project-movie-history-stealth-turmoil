@@ -76,13 +76,15 @@ function getMoreMovies(page, searchText){
         clearTimeout(timer);
         // setTimeout(loadEnter(), 5000);
     });  
-
-
-            }, 10000 * (page-1));
-
-            }, 10500 * (page-1));
-
 }
+
+
+//             // }, 10000 * (page-1));
+//             // // }, 10000 * (page-1));
+
+//             }, 10500 * (page-1));
+
+// }
 
 function initialMovies (firstMovies, totalPages, searchText) {
     console.log(firstMovies);
@@ -122,4 +124,3 @@ $(document).on("keypress", "#movieSearch", function(){
 
 movie_model.getTopMovies()
     .then((topMovies) => movie_view.printTopMovies(topMovies));
-

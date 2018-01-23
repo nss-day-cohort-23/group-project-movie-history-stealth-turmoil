@@ -30,10 +30,10 @@ module.exports.printMovie = (movie, cast) => {
 };
 
 // let movie_model = require('./movie_model');
-let movie_control = require('./movie_controller');
+// let movie_control = require('./movie_controller');
 let user_control = require('./user_controller');
 let movieArr = [];
-const $ = require("jquery");
+// const $ = require("jquery");
 
 module.exports.printMovie = (movie, cast) => {
 
