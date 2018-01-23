@@ -18,22 +18,35 @@ module.exports.activateListeners = () =>{
 
   $btnLogOut.click(user_model.logOut);
 
-  $('#showList').click(user_model.postWatchlist);
-};
+  $('#showList').click(function(){
+  user_model.getWatchList().then(movieList =>{
+    user_model.showWatchlist(movieList);
 
+  });
+});
+
+};
 $(document).on('click', ".addMovie", function() {
   let movieId =  this.id;
-  let movieTitle = $(this).siblings('.title').html();
-  let movieDate = $(this).siblings('.date').html();
-  let movieCast = $(this).siblings('.cast').html();
-  let movieImg = $(this).siblings('.image')[0].src;
-  
+
+
+  user_model.getWatchList().then(movieList =>{
+
+    //this is like 90% done. validate movie for uniqueness, only add to watchlist if movie doesn't already exist in watchlist.
+    //Beware break doesn't actually work for a foreach, you'll have to do somethign else
+    //you'll have to add finish this conditional, only create the movie obj when it is false
+   let watchListData = user_model.showWatchlist(movieList);
+    watchListData.forEach((movie)=>{
+      if(movieId == movie.movieId){
+        window.alert('You have already added this movie. ');
+        // break;
+      } 
+  });
+});
+
   let movieObj ={ 
-    movieId: movieId,
-    title: movieTitle,
-    date: movieDate,
-    cast: movieCast,
-    img: movieImg
+    movieId: this.id
+
   };
   user_model.addMovie(movieObj);
 

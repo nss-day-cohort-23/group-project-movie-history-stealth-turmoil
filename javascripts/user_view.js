@@ -5,21 +5,21 @@ let $txtEmail = $('#txtEmail');
 let $txtPassword = $('#txtPassword');
 
 
-module.exports.printWatchList = (listArray) =>{
-  listArray.forEach(movie =>{
+// module.exports.printWatchList = (listArray) =>{
+//   listArray.forEach(movie =>{
 
-  $("#watchlist").append(
+//   $("#watchlist").append(
 
-    `<div class="movieCard">
-      <img class='image'src=${movie.img}>
-      <h3 class='title'>${movie.title}</h3>
-       <h3 class='date'>${movie.date}</h3>
-      <p class='cast'>${movie.cast}</p>
-      </div>`);
+//     `<div class="movieCard">
+//       <img class='image'src=${movie.img}>
+//       <h3 class='title'>${movie.title}</h3>
+//        <h3 class='date'>${movie.date}</h3>
+//       <p class='cast'>${movie.cast}</p>
+//       </div>`);
     
-  });
+//   });
 
-};
+// };
 
 
 module.exports.authError= (error)=> {
@@ -42,7 +42,7 @@ module.exports.authError= (error)=> {
       $errorArea.html('There is already an account associated with this email address.');
       break;
     case 'The password is invalid or the user does not have a password.':
-    $errorArea.html('The password you entered is incorrect, please try again');
+      $errorArea.html('The password you entered is incorrect, please try again');
       break;
   }
 

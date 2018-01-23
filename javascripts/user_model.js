@@ -10,6 +10,7 @@ let $errorArea = $('#errorArea');
 let $txtEmail = $('#txtEmail');
 let $txtPassword = $('#txtPassword');
 let currentUser;
+
 let fbUrl = 'https://stealth-turmoil.firebaseio.com/';
 module.exports.login = () => {
   $errorArea.empty();
@@ -66,12 +67,13 @@ auth.onAuthStateChanged(firebaseUser => {
 
 
 module.exports.addMovie = (movieData) => {
-  let id = currentUser.uid;
+  let uid = currentUser.uid;
   movieData.uid = currentUser.uid;
-  console.log(movieData, 'data');
+
+
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: fbUrl + `users/${id}/watchlist.json`,
+      url: fbUrl + `watchlist.json`,
       method: "POST",
       data: JSON.stringify(movieData)
     }).done(data => {
@@ -81,30 +83,60 @@ module.exports.addMovie = (movieData) => {
 };
 
 
-function getWatchList() {
-  let id = currentUser.uid;
+
+module.exports.getWatchList =() => {
+  let uid = currentUser.uid;
+  // console.log(id, 'id');
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: fbUrl + `users/${id}/watchlist.json`,
+      url: fbUrl + `watchlist.json?orderBy="uid"&equalTo="${uid}"`
+
     }).done(movieList => {
       resolve(movieList);
+
     });
-  });
-}
-module.exports.postWatchlist = () => {
-  getWatchList().then(movieList => {
-    showWatchlist(movieList);
   });
 };
 
-function showWatchlist(movieList) {
+  // getWatchList().then(movieList => {
+  //   showWatchlist(movieList);
+  // });
+
+
+module.exports.showWatchlist= (movieList) => {
   let listArray = [];
+
   let keys = Object.keys(movieList);
   keys.forEach(key => {
     movieList[key].id = key;
     listArray.push(movieList[key]);
   });
-  user_view.printWatchList(listArray);
-}
+  return listArray;
+
+};
+
+// module.exports.yetAnotherFunction= ()=>{
+//   let uid = currentUser.uid;
+//   return new Promise((resolve, reject) => {
+//     $.ajax({
+//       url: fbUrl + `watchlist.json?orderBy="uid"&equalTo="${uid}"`
+
+//     }).done(myMovies => {
+//       resolve(myMovies);
+//     });
+//   });
+// };
+
+
+// module.exports.formatMovies= (movies)=>{
+//   let array = [];
+//   let keys = Object.keys(movies);
+//   keys.forEach(key => {
+//     movies[key].id = key;
+//     array.push(movies[key]);
+//   });
+//   return array;
+// };
+
 
 
