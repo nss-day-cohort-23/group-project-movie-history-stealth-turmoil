@@ -10,24 +10,22 @@ module.exports.rate = () => {
     $(".rate").rateYo({
         numStars: 10,
         fullStar: true,
-        starWidth: "16px",
-         rating: "50%",
-        precision: 0
+        starWidth: "16px"
         
     });
  
 };
 
-// // Getter
-// var starWidth = $(".rate").rateYo("option", "starWidth");
-// var fullStar = $(".rate").rateYo("option", "fullStar");
-// var numStar = $(".rate").rateYo("option", "numStars");
- 
-// // Setter
-// $(".rate").rateYo("option", "starWidth", "1px"); 
-// $(".rate").rateYo("option", "numStars", 10);
-// $(".rate").rateYo("option", "fullStar", true);
 
+$(document).on("click", ".rate",  function(){
+    console.log($(this));
+ 
+    var $rateYo = $(this).rateYo();
+    /* get rating */
+    var rating = $rateYo.rateYo("rating");
+    
+    window.alert("Its " + rating + " Yo!");
+});
 
 
     

@@ -13,7 +13,7 @@ module.exports.printMovie = (movie, cast) => {
                 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}">
                 <h3>${movie.title} (${movie.release_date.slice(0,4)})</h3>
                 <p><strong>Cast:</strong> ${cast[0].name}, ${cast[1].name}, ${cast[2].name}</p>
-                <div class="rate"></div></div>`);
+                <div class="rate" id="#${movie.id}Rate"></div></div>`);
                 rateyo.rate();
     } else {
         $("#output").append(
@@ -22,5 +22,8 @@ module.exports.printMovie = (movie, cast) => {
                 <h3>${movie.title} (${movie.release_date.slice(0, 4)})</h3>
                 <p><strong>Cast:</strong> ${cast[0].name}, ${cast[1].name}, ${cast[2].name}</p>
             </div>`);
+            $("#${movie.id}Rate").on("click", function(){
+                console.log($("this").rateYo("rating") );
+            });
     }
 };
