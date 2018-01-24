@@ -1,4 +1,6 @@
 'use strict';
+// const $ = require('jquery');
+
 
 module.exports.rate = () => {
     
@@ -23,11 +25,11 @@ $(document).on("click", ".rate",  function(){
     // this allows you to get a popup with the rating in integer form
     var $rateYo = $(this).rateYo();
     //get rating 
-    var rating = $rateYo.rateYo("rating");
+    var rating = ($rateYo.rateYo("rating") *2);
 
     // rating * 2 will give you the correct integer.
     // this had to be done because the rating is based on 5 stars
-    window.alert("Its " + rating  + " Yo!");
+    window.alert("Its " + rating + " Yo!");
 });
 
 

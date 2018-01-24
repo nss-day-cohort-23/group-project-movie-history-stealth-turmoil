@@ -1,6 +1,6 @@
 'use strict';
 
-
+// const $ = require('jquery');
 
 module.exports.getTopMovies = () => {
     return new Promise(function (resolve, reject) {
