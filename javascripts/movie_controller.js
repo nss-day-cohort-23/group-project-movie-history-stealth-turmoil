@@ -2,7 +2,7 @@
 
 const movie_model = require('./movie_model');
 const movie_view = require('./movie_view');
-
+// const $ = require('jquery');
 
 
 

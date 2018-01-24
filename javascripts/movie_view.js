@@ -31,24 +31,24 @@ module.exports.printMovie = (movie, cast) => {
 
 // let movie_model = require('./movie_model');
 // let movie_control = require('./movie_controller');
-let user_control = require('./user_controller');
-let movieArr = [];
+// let user_control = require('./user_controller');
+// let movieArr = [];
 // const $ = require("jquery");
 
-module.exports.printMovie = (movie, cast) => {
+// module.exports.printMovie = (movie, cast) => {
 
-  $("#output").append(
+//   $("#output").append(
 
-    `<div class="movieCard" id="${movie.id}Card">
-      <img class='image'src=` + (movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` 
-      : `../images/no-poster.png`) + `>
-      <h3 class='title'>${movie.title}</h3>
-       <h3 class='date'>(${movie.release_date.slice(0, 4)})</h3>
-      <p class='cast'>${writeCast(cast)}</p>
-      <button class='addMovie' id='${movie.id}'>Add to Watchilist</button>
-      </div>`);
+//     `<div class="movieCard" id="${movie.id}Card">
+//       <img class='image'src=` + (movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` 
+//       : `../images/no-poster.png`) + `>
+//       <h3 class='title'>${movie.title}</h3>
+//        <h3 class='date'>(${movie.release_date.slice(0, 4)})</h3>
+//       <p class='cast'>${writeCast(cast)}</p>
+//       <button class='addMovie' id='${movie.id}'>Add to Watchilist</button>
+//       </div>`);
 
-      };
+//       };
 
 
 function writeCast(cast){

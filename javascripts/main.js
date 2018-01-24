@@ -7,7 +7,7 @@ const user_control = require('./user_controller');
 const cred = require('./config/fbCreds');
 let fbConfig = require('./config/fbConfig');
 let rateyo = require('./rateyo');
-//const $ = require('jquery');
+// const $ = require('jquery');
 const fbURL = "https://stealth-turmoil.firebaseio.com";
 
 
