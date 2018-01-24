@@ -3,19 +3,21 @@
 let $errorArea = $('#errorArea');
 let $txtEmail = $('#txtEmail');
 let $txtPassword = $('#txtPassword');
-
+let rateyo = require("./rateyo");
 
 module.exports.printWatchList = (listArray) =>{
+
+  console.log("list array in output", listArray);
+  $("#output").empty();
   listArray.forEach(movie =>{
-
-  $("#watchlist").append(
-
+  $("#output").append(
     `<div class="movieCard">
       <img class='image'src=${movie.img}>
       <h3 class='title'>${movie.title}</h3>
        <h3 class='date'>${movie.date}</h3>
       <p class='cast'>${movie.cast}</p>
-      </div>`);
+      <div class="rate" id="#${movie.id}Rate"></div></div>`);
+      rateyo.rate();
     
   });
 };

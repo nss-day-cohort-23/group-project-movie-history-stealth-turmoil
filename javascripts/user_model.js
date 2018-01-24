@@ -86,16 +86,20 @@ module.exports.addMovie = (movieData) => {
 function getWatchList() {
   let id = currentUser.uid;
   return new Promise((resolve, reject) => {
+    console.log("ID", id);
     $.ajax({
       url: fbUrl + `users/${id}/watchlist.json`,
     }).done(movieList => {
       resolve(movieList);
+      console.log("movie List", movieList);
     });
   });
 }
 module.exports.postWatchlist = () => {
+  console.log("getWatchList", getWatchList());
   getWatchList().then(movieList => {
     showWatchlist(movieList);
+    console.log("POST WATCH LIST RUNNING");
   });
 };
 
@@ -106,6 +110,7 @@ function showWatchlist(movieList) {
     movieList[key].id = key;
     listArray.push(movieList[key]);
   });
+  console.log("list array", listArray);
   user_view.printWatchList(listArray);
 }
 

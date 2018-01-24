@@ -21,6 +21,7 @@ module.exports.activateListeners =() =>{
 
   $('#showList').on("click", user_model.postWatchlist);
 
+
 };
 
 $(document).on('click', ".addMovie", function() {

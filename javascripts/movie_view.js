@@ -47,10 +47,8 @@ module.exports.printMovie = (movie, cast) => {
        <h3 class='date'>(${movie.release_date.slice(0, 4)})</h3>
       <p class='cast'>${writeCast(cast)}</p>
       <button class='addMovie' id='${movie.id}'>Add to Watchilist</button>
-      <div class="rate" id="#${movie.id}Rate"></div></div>`);
-      rateyo.rate();
-     
-      };
+      </div>`);
+    };
 
 
 function writeCast(cast){
