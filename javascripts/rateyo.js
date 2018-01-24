@@ -1,6 +1,8 @@
 'use strict';
 // const $ = require('jquery');
 
+let userModel = require("./user_model");
+
 
 module.exports.rate = () => {
     
@@ -30,7 +32,10 @@ $(document).on("click", ".rate",  function(){
     // rating * 2 will give you the correct integer.
     // this had to be done because the rating is based on 5 stars
     window.alert("Its " + rating + " Yo!");
+    console.log("event.target parent", $(event.target).parents(".rate").attr("id"));
+    userModel.addMovieRating(rating, $(event.target).parents(".rate").attr("id"));
 });
+
 
 
     

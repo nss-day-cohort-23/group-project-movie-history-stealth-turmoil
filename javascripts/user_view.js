@@ -16,11 +16,27 @@ module.exports.printWatchList = (listArray) =>{
       <h3 class='title'>${movie.title}</h3>
        <h3 class='date'>${movie.date}</h3>
       <p class='cast'>${movie.cast}</p>
-      <div class="rate" id="#${movie.id}Rate"></div></div>`);
+      <div class="rate" id="${movie.id}"></div></div>`);
       rateyo.rate();
     
   });
 };
+
+// module.exports.printWatchedList = (listArray) =>{
+//   $("#output").empty();
+//   listArray.forEach(movie =>{
+//   $("#output").append(
+//     `<div class="movieCard">
+//       <img class='image'src=${movie.img}>
+//       <h3 class='title'>${movie.title}</h3>
+//        <h3 class='date'>${movie.date}</h3>
+//       <p class='cast'>${movie.cast}</p>
+//       <div class="rate" id="#${movie.id}Rate"></div></div>`);
+//       rateyo.rate();
+    
+//   });
+// };
+
 
 module.exports.authError= (error)=> {
 

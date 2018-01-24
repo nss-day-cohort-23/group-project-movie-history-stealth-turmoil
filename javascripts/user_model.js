@@ -82,6 +82,21 @@ module.exports.addMovie = (movieData) => {
   });
 };
 
+module.exports.addMovieRating = (rating, movieObjKey) => {
+  let id = currentUser.uid;
+  // movieData.uid = currentUser.uid;
+  console.log(rating, 'rating');
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: fbUrl + `users/${id}/watchlist/${movieObjKey}/rating.json`,
+      method: "PUT",
+      data: JSON.stringify(rating)
+    }).done(data => {
+      console.log('add movie rating patch');
+    });
+  });
+};
+
 
 function getWatchList() {
   let id = currentUser.uid;
@@ -112,6 +127,8 @@ function showWatchlist(movieList) {
   });
   console.log("list array", listArray);
   user_view.printWatchList(listArray);
+
+  // user_view.printWatchedList();
 }
 
 
