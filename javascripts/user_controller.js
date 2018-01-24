@@ -21,6 +21,10 @@ module.exports.activateListeners =() =>{
 
   $('#showList').on("click", user_model.postWatchlist);
 
+  $('#watchedList').on("click",function(){
+    console.log(" watched list click");
+  });
+
 
 };
 
