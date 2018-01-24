@@ -9,6 +9,7 @@ let $btnLogin = $('#btnLogin');
 let $btnSignUp = $('#btnSignUp');
 let $btnLogOut = $('#btnLogOut');
 let $newAccount = $('#newAccount');
+let $selectedMovie = $('#selectedMovie');
 
 module.exports.activateListeners =() =>{
   $(document).on("click", '#btnLogin', user_model.login);
@@ -21,6 +22,7 @@ module.exports.activateListeners =() =>{
 
   $('#showList').on("click", user_model.postWatchlist);
 
+  $(document).on("click", "#deleteMovie", e => deleteUserMovie(e));
 
 };
 
@@ -30,6 +32,7 @@ $(document).on('click', ".addMovie", function() {
   let movieDate = $(this).siblings('.date').html();
   let movieCast = $(this).siblings('.cast').html();
   let movieImg = $(this).siblings('.image')[0].src;
+  
   
 
   // $(document).on('click', ".addMovie", function() {
@@ -68,3 +71,11 @@ $(document).on("click", "#accountLoad", function() {
   user_view.userSignUp();
   module.exports.activateListeners(); //this was commented out?? -cb
 });
+
+$(document).on("click", "#deleteMovie", e => deleteUserMovie(e));
+
+const deleteUserMovie = movieClicked => {
+  let $selectedMovie = $(movieClicked.currentTarget).parent().attr('id');
+  user_model.deleteFirebaseMovie($selectedMovie)
+  .then(user_view.removeCard($selectedMovie));
+};

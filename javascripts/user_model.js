@@ -98,12 +98,12 @@ function getWatchList() {
 module.exports.postWatchlist = () => {
   console.log("getWatchList", getWatchList());
   getWatchList().then(movieList => {
-    showWatchlist(movieList);
+    module.exports.showWatchlist(movieList);
     console.log("POST WATCH LIST RUNNING");
   });
 };
 
-function showWatchlist(movieList) {
+module.exports.showWatchlist =(movieList) =>{
   let listArray = [];
   let keys = Object.keys(movieList);
   keys.forEach(key => {
@@ -112,6 +112,6 @@ function showWatchlist(movieList) {
   });
   console.log("list array", listArray);
   user_view.printWatchList(listArray);
-}
+};
 
 

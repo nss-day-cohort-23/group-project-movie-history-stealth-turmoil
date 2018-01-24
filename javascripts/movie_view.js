@@ -46,7 +46,8 @@ module.exports.printMovie = (movie, cast) => {
       <h3 class='title'>${movie.title}</h3>
        <h3 class='date'>(${movie.release_date.slice(0, 4)})</h3>
       <p class='cast'>${writeCast(cast)}</p>
-      <button class='addMovie' id='${movie.id}'>Add to Watchilist</button>
+      <button class='addMovie' id='${movie.id}'>Add to Watchlist</button>
+      <button class= "deleteUserMovie">Delete</button>
       </div>`);
     };
 
